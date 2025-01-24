@@ -1,0 +1,9 @@
+<svg width="601" height="870" viewBox="0 0 601 870" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+    <linearGradient id="MyGradient" gradientTransform="rotate(90)">
+        <stop offset="0%" stop-color="#393E46"></stop>
+        <stop offset="100%" stop-color="#687980"></stop>
+    </linearGradient>
+</defs>
+<path fill="url(#MyGradient)" d="M30 0C14 -0.000244138 -3.05176e-05 13.9998 0 30V840C0 856 14 870 30.5 870H570C586 870 600 856 600.5 840.5L600 300C600 260 581.5 230 530 230C404 230 370 160.5 370 70.0001C370.032 29.9862 340.5 -0.000183103 300.5 0C260.5 0.000183109 46 0.000244145 30 0Z"/>
+</svg>

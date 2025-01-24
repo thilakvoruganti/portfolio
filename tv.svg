@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <style>
+    rect{
+        fill:white;
+    }
+    path{
+        fill:white;
+    }
+    .bg{
+        fill:black;
+    }
+        @media (prefers-color-scheme: dark) {
+            .bg{
+                fill:transparent;
+            }
+        }
+  </style>
+<rect class="bg" width="80" height="80"/>
+<rect x="16.8965" y="26" width="13.7931" height="27.5862" />
+<rect x="10" y="26" width="27.5862" height="6.89655"/>
+<path d="M70 26H40.3448L55.1724 53.5862L70 26Z"/>
+</svg>
+

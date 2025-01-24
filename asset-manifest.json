@@ -1,14 +1,20 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.f855e6bc.css",
-    "main.js": "/portfolio/static/js/main.b25667aa.js",
-    "static/media/logo.svg": "/portfolio/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/portfolio/static/css/main.d5f4c2de.css",
+    "main.js": "/portfolio/static/js/main.c70ba8ef.js",
+    "static/media/ecommerce.jpg": "/portfolio/static/media/ecommerce.ea2828df523709e755b7.jpg",
+    "static/media/ecoflights.jpg": "/portfolio/static/media/ecoflights.2b73af7552c9a81ff0ea.jpg",
+    "static/media/ecoflights.png": "/portfolio/static/media/ecoflights.ad71943a4a339b91af46.png",
+    "static/media/loader.gif": "/portfolio/static/media/loader.f7df46d7798d10556b3f.gif",
+    "static/media/tvb.png": "/portfolio/static/media/tvb.6eb9f3ed438a41a7b496.png",
+    "static/media/TV.jpeg": "/portfolio/static/media/TV.9c07329b5b3327ea8bbd.jpeg",
     "index.html": "/portfolio/index.html",
-    "main.f855e6bc.css.map": "/portfolio/static/css/main.f855e6bc.css.map",
-    "main.b25667aa.js.map": "/portfolio/static/js/main.b25667aa.js.map"
+    "static/media/unq.svg": "/portfolio/static/media/unq.26d0726f1bca018e1375.svg",
+    "main.d5f4c2de.css.map": "/portfolio/static/css/main.d5f4c2de.css.map",
+    "main.c70ba8ef.js.map": "/portfolio/static/js/main.c70ba8ef.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.b25667aa.js"
+    "static/css/main.d5f4c2de.css",
+    "static/js/main.c70ba8ef.js"
   ]
 }
