@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.d5f4c2de.css",
+    "main.css": "/portfolio/static/css/main.0bed5959.css",
     "main.js": "/portfolio/static/js/main.c70ba8ef.js",
     "static/media/ecommerce.jpg": "/portfolio/static/media/ecommerce.ea2828df523709e755b7.jpg",
     "static/media/ecoflights.jpg": "/portfolio/static/media/ecoflights.2b73af7552c9a81ff0ea.jpg",
@@ -10,11 +10,11 @@
     "static/media/TV.jpeg": "/portfolio/static/media/TV.9c07329b5b3327ea8bbd.jpeg",
     "index.html": "/portfolio/index.html",
     "static/media/unq.svg": "/portfolio/static/media/unq.26d0726f1bca018e1375.svg",
-    "main.d5f4c2de.css.map": "/portfolio/static/css/main.d5f4c2de.css.map",
+    "main.0bed5959.css.map": "/portfolio/static/css/main.0bed5959.css.map",
     "main.c70ba8ef.js.map": "/portfolio/static/js/main.c70ba8ef.js.map"
   },
   "entrypoints": [
-    "static/css/main.d5f4c2de.css",
+    "static/css/main.0bed5959.css",
     "static/js/main.c70ba8ef.js"
   ]
 }
