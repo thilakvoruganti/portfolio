@@ -1,0 +1,24 @@
+.landing{
+    .profile-card-con{
+        display: flex;
+        overflow-y: hidden;
+        .profile-card{
+            width:392px;
+            height: 522px;
+            margin-right: 23px;
+            box-shadow: 0vw 0.15625vw 0.41666vw rgba(0, 0, 0, 0.1607843137);
+            img{
+                width:392px;
+                height: 522px;
+            }
+        }
+        .highlight{
+            width: 490px;
+            height: 653px;
+            img{
+                width: 490px;
+                height: 653px;
+            }
+        }
+    }
+}

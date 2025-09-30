@@ -1,0 +1,22 @@
+.landing .profile-card-con {
+  display: flex;
+  overflow-y: hidden;
+}
+.landing .profile-card-con .profile-card {
+  width: 392px;
+  height: 522px;
+  margin-right: 23px;
+  box-shadow: 0vw 0.15625vw 0.41666vw rgba(0, 0, 0, 0.1607843137);
+}
+.landing .profile-card-con .profile-card img {
+  width: 392px;
+  height: 522px;
+}
+.landing .profile-card-con .highlight {
+  width: 490px;
+  height: 653px;
+}
+.landing .profile-card-con .highlight img {
+  width: 490px;
+  height: 653px;
+}/*# sourceMappingURL=index.css.map */

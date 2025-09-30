@@ -1,0 +1,22 @@
+[
+    {
+        "title":"Frontend Engineer",
+        "cardimage":"frontend.png"
+    },
+        {
+        "title":"AI Engineer",
+        "cardimage":"AI.png"
+    },
+    {
+        "title":"About me",
+        "cardimage":"profile.png"
+    },   
+    {
+        "title":"UX Designer",
+        "cardimage":"figma.png"
+    },
+    {
+        "title":"Backend Engineer",
+        "cardimage":"backend.png"
+    }
+]

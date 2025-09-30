@@ -216,7 +216,7 @@ const copy = useMemo(
   const bottomOffset = 0;
 
   return (
-    <main className="pt-16">{/* clears 64px navbar */}
+    <main className="pt-16 ">{/* clears 64px navbar */}
       <section className="cards-wrap relative mx-auto w-screen isolate">
         <div>
           <Carousel5
@@ -388,7 +388,7 @@ function HeroTypingCard({ text, cta, to, type }) {
             <TypingText text={text} speed={90} punctPause={500} startDelay={300} lineHeightPx={type.lh} />
           </h2>
         </div>
-        <div className="mt-auto px-6 pb-6 pt-4 flex justify-end">
+        <div className=" px-6 pb-6 pt-4 flex justify-end">
           <button
             className="px-4 py-2 rounded-xl bg-neutral-900 text-white text-sm hover:bg-neutral-800 transition"
             onClick={() => to && navigate(to)}
