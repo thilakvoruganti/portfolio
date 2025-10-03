@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 // Images
-import FE_IMG from "../images/frontend.png";
-import BE_IMG from "../images/backend.png";
-import AI_IMG from "../images/AI.png";
-import UX_IMG from "../images/figma.png";
+import FE_IMG from "../images/frontend.svg";
+import BE_IMG from "../images/backend.svg";
+import AI_IMG from "../images/AI.svg";
+import UX_IMG from "../images/figma.svg";
 import PROFILE_IMG from "../images/profile.png";
 
 /* ----------------- small utils ----------------- */
@@ -14,6 +14,13 @@ const r = (n) => Math.round(n);
 const clamp01 = (x) => Math.max(0, Math.min(1, x));
 const lerp = (a, b, t) => a + (b - a) * t;
 const tRange = (vw, lo, hi) => clamp01((vw - lo) / (hi - lo));
+const CARD_DATA = [
+  { id: "fe", src: FE_IMG, alt: "Front-end" },
+  { id: "ai", src: AI_IMG, alt: "AI Engineer" },
+  { id: "profile", src: PROFILE_IMG, alt: "Profile" },
+  { id: "ux", src: UX_IMG, alt: "UX Designer" },
+  { id: "be", src: BE_IMG, alt: "Back-end" },
+];
 
 function useViewport() {
   const [vw, setVw] = useState(typeof window !== "undefined" ? window.innerWidth : 1920);
@@ -27,32 +34,21 @@ function useViewport() {
 
 /* ----------------- sizing (fluid in bands) ----------------- */
 function getConfig(vw) {
-  if (vw >= 1920) {
+  if (vw >= 1440) {
     return {
       L: { w: 490, h: 653 },
       M: { w: 392, h: 522 },
       S: { w: 343, h: 457 },
-      type: { w: 692, h: 237, fs: 40, lh: 48 },
-      visibleOuter: true,
-    };
-  }
-  if (vw >= 1440) {
-    const s = Math.max(0.001, vw / 1919);
-    return {
-      L: { w: r(420 * s), h: r(560 * s) },
-      M: { w: r(336 * s), h: r(448 * s) },
-      S: { w: r(294 * s), h: r(392 * s) },
-      type: { w: r(772 * s), h: r(238 * s), fs: r(36 * s), lh: r(44 * s) },
+      type: { w: 780, h: 245, fs: 40, lh: 48 },
       visibleOuter: true,
     };
   }
   if (vw >= 1280) {
-    const s = Math.max(0.001, vw / 1439);
     return {
-      L: { w: r(360 * s), h: r(480 * s) },
-      M: { w: r(288 * s), h: r(384 * s) },
-      S: { w: r(252 * s), h: r(336 * s) },
-      type: { w: r(526 * s), h: r(191 * s), fs: r(32 * s), lh: r(40 * s) },
+      L: { w: 360, h: 480 },
+      M: { w: 288, h: 384 },
+      S: { w: 252, h: 336 },
+      type: { w: 595, h: 195, fs: 32, lh: 40 },
       visibleOuter: true,
     };
   }
@@ -66,17 +62,17 @@ function getConfig(vw) {
       visibleOuter: true, // 5 cards at ≥960
     };
   }
-  if (vw >= 560) {
-    // 560 → 959 fluid 3-card
-    const t = tRange(vw, 560, 959); // 0 @560 → 1 @959
-    const Lw = r(lerp(487, 400, t));
-    const Lh = r(lerp(650, 533, t));
-    const Mw = r(lerp(390, 320, t));
-    const Mh = r(lerp(520, 427, t));
-    const typeW = r(lerp(503, 406, t));
-    const typeH = 172;
-    const fs = r(lerp(34, 28, t));
-    const lh = r(lerp(42, 36, t));
+  if (vw >= 767) {
+    // 767 → 959 fluid 3-card band
+    const t = tRange(vw, 767, 959); // 0 @767 → 1 @959
+    const Lw = r(lerp(360, 400, t));
+    const Lh = r(lerp(480, 533, t));
+    const Mw = r(lerp(288, 320, t));
+    const Mh = r(lerp(384, 426, t));
+    const typeW = r(lerp(384, 475, t));
+    const typeH = 175;
+    const fs = r(lerp(30, 32, t));
+    const lh = r(lerp(36, 40, t));
     return {
       L: { w: Lw, h: Lh },
       M: { w: Mw, h: Mh },
@@ -85,23 +81,37 @@ function getConfig(vw) {
       visibleOuter: false,
     };
   }
-  // <560 fluid from 560 anchor
-  const s = Math.max(0.001, vw / 560);
+  if (vw >= 560) {
+    // 560 → 766 fluid 3-card band
+    const t = tRange(vw, 560, 766); // 0 @560 → 1 @766
+    const Lw = r(lerp(280, 384, t));
+    const Lh = r(lerp(374, 512, t));
+    const Mw = r(lerp(225, 307, t));
+    const Mh = r(lerp(300, 409, t));
+    const typeW = r(lerp(323, 443, t));
+    const typeH = 175;
+    const fs = r(lerp(30, 32, t));
+    const lh = 40;
+    return {
+      L: { w: Lw, h: Lh },
+      M: { w: Mw, h: Mh },
+      S: { w: 0, h: 0 },
+      type: { w: typeW, h: typeH, fs, lh },
+      visibleOuter: false,
+    };
+  }
+  // <560 fluid toward mobile targets (ends at 389x520 etc. when vw≈559)
+  const s = Math.max(0.001, vw / 559);
+  const fs = Math.max(18, r(28 * s));
+  const lh = Math.max(28, r(fs * 1.35));
   return {
     L: { w: r(487 * s), h: r(650 * s) },
-    M: { w: r(390 * s), h: r(520 * s) },
+    M: { w: r(389 * s), h: r(520 * s) },
     S: { w: 0, h: 0 },
-    type: { w: r(503 * s), h: r(172 * s), fs: r(34 * s), lh: r(42 * s) },
+    type: { w: r(507 * s), h: 175, fs, lh },
     visibleOuter: false,
   };
 }
-
-/* Typing/controls band offset (rem → px) */
-const getBottomOffsetPx = (vw) => {
-  if (vw >= 1440) return 8.9375 * 16;
-  if (vw >= 960) return 6.6875 * 16;
-  return 3 * 16;
-};
 
 /* ----------------- autoplay + progress ring ----------------- */
 function useAutoRotate({ running, durationMs, onTick }) {
@@ -122,8 +132,11 @@ function useAutoRotate({ running, durationMs, onTick }) {
     }
     const loop = (ts) => {
       if (lastTsRef.current == null) lastTsRef.current = ts;
-      const dt = ts - lastTsRef.current;
+      const rawDt = ts - lastTsRef.current;
       lastTsRef.current = ts;
+
+      // When the tab resumes after being hidden, clamp the delta so we don't fast-forward
+      const dt = Math.min(rawDt, durationMs);
 
       // accumulate time and emit at most one tick per frame
       let acc = accumRef.current + dt;
@@ -158,35 +171,36 @@ export default function Landing() {
   const cfg = getConfig(vw);
 
   // carousel position (0..4)
-  const [shift, setShift] = useState(0);
+  const [shift, setShift] = useState(2);
   const [centerId, setCenterId] = useState("profile");
+  const [allLoaded] = useState(true);
 
   // calm copy per card (2 lines each)
-const copy = useMemo(
-  () => ({
-    profile: {
-      text: "I build end-to-end products with 4+ years of experience.",
-      cta: "About me", to: "/about",
-    },
-    ai: {
-      text: "I use intelligence quietly, saving time without stealing attention.",
-      cta: "Explore", to: "/ai",
-    },
-    ux: {
-      text: "I design what feels obvious, respectful, and beautifully simple.",
-      cta: "Case Studies", to: "/ux",
-    },
-    fe: {
-      text: "I craft interfaces that load fast and stay delightfully smooth.",
-      cta: "See work", to: "/frontend",
-    },
-    be: {
-      text: "I build clean APIs and dependable data pipelines that scale.",
-      cta: "See work", to: "/backend",
-    },
-  }),
-  []
-);
+  const copy = useMemo(
+    () => ({
+      profile: {
+        text: "I build end-to-end products with 4+ years of experience.",
+        cta: "About me", to: "/about",
+      },
+      ai: {
+        text: "I use intelligence quietly, saving time without stealing attention.",
+        cta: "Explore", to: "/ai",
+      },
+      ux: {
+        text: "I design what feels obvious, respectful, and beautifully simple.",
+        cta: "Case Studies", to: "/ux",
+      },
+      fe: {
+        text: "I craft interfaces that load fast and stay delightfully smooth.",
+        cta: "See work", to: "/frontend",
+      },
+      be: {
+        text: "I build clean APIs and dependable data pipelines that scale.",
+        cta: "See work", to: "/backend",
+      },
+    }),
+    []
+  );
 
   const current = copy[centerId] ?? copy.profile;
 
@@ -213,7 +227,22 @@ const copy = useMemo(
 
   // height of the highlighted (center) card only
   const trackHeight = cfg.L.h;
-  const bottomOffset = 0;
+  const typeBottom = useMemo(() => {
+    if (vw >= 1440) return 300;
+    if (vw >= 960) return 255;
+    if (vw >= 767) return 200;
+    if (vw >= 560) return 220;
+    return 180;
+  }, [cfg.L.h, cfg.type.h, vw]);
+
+  const detailWidth = useMemo(() => {
+    if (vw >= 1440) return 491;
+    if (vw >= 1280) return 489;
+    if (vw >= 560) return cfg.type.w;
+    return Math.round(Math.max(200, Math.min(511, (vw / 559) * 511)));
+  }, [vw, cfg.type.w]);
+
+
 
   return (
     <main className="pt-16 ">{/* clears 64px navbar */}
@@ -225,22 +254,36 @@ const copy = useMemo(
             shift={shift}
             onCenterChange={setCenterId}
             trackHeight={trackHeight}
-            bottomOffset={bottomOffset}
           />
 
           {/* Typing + Controls */}
-          <div className="type-wrap z-[60]">
+          <div className="type-wrap z-[60]" style={{ bottom: typeBottom }}>
             <div className="relative pointer-events-none" style={{ width: cfg.type.w }}>
-              <HeroTypingCard text={current.text} cta={current.cta} to={current.to} type={cfg.type} />
+              <HeroTypingCard
+                text={current.text}
+                cta={current.cta}
+                to={current.to}
+                type={cfg.type}
+                vw={vw}
+              />
             </div>
           </div>
           <Controls
+            vw={vw}
             onPrev={prev}
             onNext={next}
             running={running}
             onToggle={() => setRunning((v) => !v)}
             progress={progress}
           />
+        </div>
+        <div className="mt-16 flex justify-center px-6">
+          <p
+            className="text-center text-lg leading-7 text-neutral-700"
+            style={{ maxWidth: detailWidth }}
+          >
+            A collection of my roles, all in one place. Go explore each profile individually.
+          </p>
         </div>
       </section>
     </main>
@@ -253,16 +296,7 @@ function usePrevious(value) {
 }
 /* ===================== Carousel ===================== */
 function Carousel5({ vw, cfg, shift, onCenterChange, trackHeight }) {
-  const cards = useMemo(
-    () => [
-      { id: "fe", src: FE_IMG, alt: "Front-end" },
-      { id: "ai", src: AI_IMG, alt: "AI Engineer" },
-      { id: "profile", src: PROFILE_IMG, alt: "Profile" },
-      { id: "ux", src: UX_IMG, alt: "UX Designer" },
-      { id: "be", src: BE_IMG, alt: "Back-end" },
-    ],
-    []
-  );
+  const cards = useMemo(() => CARD_DATA, []);
 
   const GAP = 23;
   const centerX = vw / 2;
@@ -363,6 +397,7 @@ function Carousel5({ vw, cfg, shift, onCenterChange, trackHeight }) {
               className="w-full h-full object-cover"
               loading="lazy"
               decoding="async"
+              fetchPriority={nextIdx === 2 ? "high" : "low"}
             />
           </motion.div>
         );
@@ -372,36 +407,69 @@ function Carousel5({ vw, cfg, shift, onCenterChange, trackHeight }) {
 }
 
 /* ===================== Typing Card ===================== */
-function HeroTypingCard({ text, cta, to, type }) {
+function HeroTypingCard({ text, cta, to, type, vw }) {
   const navigate = useNavigate();
+  const padding = vw >= 960 ? "1rem" : "0.75rem 1rem";
+  const isWide = vw >= 1440;
+  const isDesktop = vw >= 960;
+  const dynamicButtonFont = isDesktop
+    ? 16
+    : Math.max(12, Math.round((type.fs || 18) * 0.45));
+  const baseLetterPx = -0.005625 * 16;
+  const buttonLetterSpacing = (dynamicButtonFont / 18) * baseLetterPx;
   return (
     <div
       className="rounded-2xl border border-neutral-200 bg-white shadow-[0_18px_60px_-10px_rgba(0,0,0,0.25)] pointer-events-auto"
-      style={{ width: type.w, height: type.h }}
+      style={{
+        width: type.w,
+        minHeight: type.h,
+        padding,
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
-      <div className="h-full flex flex-col">
-        <div className="px-6 pt-6">
-          <h2
-            className="font-semibold tracking-tight whitespace-pre-line"
-            style={{ fontSize: `${type.fs}px`, lineHeight: `${type.lh}px` }}
-          >
-            <TypingText text={text} speed={90} punctPause={500} startDelay={300} lineHeightPx={type.lh} />
-          </h2>
-        </div>
-        <div className=" px-6 pb-6 pt-4 flex justify-end">
-          <button
-            className="px-4 py-2 rounded-xl bg-neutral-900 text-white text-sm hover:bg-neutral-800 transition"
-            onClick={() => to && navigate(to)}
-          >
-            {cta || "Know more"}
-          </button>
-        </div>
+      <div>
+        <h2
+          className="font-semibold tracking-tight whitespace-pre-line"
+          style={{
+            fontSize: `${type.fs}px`,
+            lineHeight: `${type.lh}px`,
+          }}
+        >
+          <TypingText
+            text={text}
+            speed={90}
+            punctPause={500}
+            startDelay={300}
+            lineHeightPx={type.lh}
+            fontSize={type.fs}
+          />
+        </h2>
+      </div>
+      <div className={`mt-auto pt-3 ${isDesktop ? "flex justify-end" : ""}`}>
+        <button
+          className={`rounded-xl bg-neutral-900 text-white transition ${isDesktop ? "w-auto px-4" : "w-full"}`}
+          onClick={() => to && navigate(to)}
+          style={{
+            padding: isDesktop ? "0.75rem 1.25rem" : "1rem",
+            fontOpticalSizing: "auto",
+            fontSize: `${dynamicButtonFont}px`,
+            lineHeight: 1.4,
+            letterSpacing: `${buttonLetterSpacing}px`,
+            fontWeight: 480,
+            fontVariationSettings: '"wdth" 98, "wght" 480',
+            margin: 0,
+            textAlign: "center",
+          }}
+        >
+          {cta || "Know more"}
+        </button>
       </div>
     </div>
   );
 }
 
-function TypingText({ text, speed = 80, punctPause = 450, startDelay = 300, lineHeightPx = 48 }) {
+function TypingText({ text, speed = 80, punctPause = 450, startDelay = 300, lineHeightPx = 48, fontSize = 36 }) {
   const [sub, setSub] = useState(0);
   const [blink, setBlink] = useState(true);
 
@@ -425,7 +493,12 @@ function TypingText({ text, speed = 80, punctPause = 450, startDelay = 300, line
   const done = sub >= (text?.length ?? 0);
 
   return (
-    <span>
+    <span
+      style={{
+        fontSize: `${fontSize}px`,
+        lineHeight: `${lineHeightPx}px`,
+      }}
+    >
       {text?.slice(0, sub) ?? ""}
       {!done && (
         <span
@@ -438,7 +511,7 @@ function TypingText({ text, speed = 80, punctPause = 450, startDelay = 300, line
 }
 
 /* ===================== Controls (Prev / TimerRing / Next) ===================== */
-function Controls({ onPrev, onNext, running, onToggle, progress }) {
+function Controls({ vw, onPrev, onNext, running, onToggle, progress }) {
   // Timer ring
   const size = 40;
   const stroke = 3;
@@ -447,9 +520,25 @@ function Controls({ onPrev, onNext, running, onToggle, progress }) {
   const dash = C;
   const offset = C * (1 - progress);
 
+  const layout = useMemo(() => {
+    if (vw >= 1440) return { paddingX: 48, marginTop: 0, justify: "flex-end" };
+    if (vw >= 1280) return { paddingX: 40, marginTop: 24, justify: "flex-end" };
+    if (vw >= 960) return { paddingX: 32, marginTop: 32, justify: "flex-end" };
+    if (vw >= 560) return { paddingX: 24, marginTop: 69, justify: "center" }; // 4.3125rem
+    return { paddingX: 24, marginTop: 109, justify: "center" }; // 6.8125rem
+  }, [vw]);
+
   // Figma-like: responsive row below the carousel, centered on small, right-aligned ≥960px
   return (
-    <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-center gap-3 mt-[6.8125rem] sm:mt-[4.3125rem] md:mt-4 lg:mt-0 lg:justify-end">
+    <div
+      className="w-full max-w-[1440px] mx-auto flex items-center gap-3"
+      style={{
+        paddingLeft: layout.paddingX,
+        paddingRight: layout.paddingX,
+        marginTop: layout.marginTop,
+        justifyContent: layout.justify,
+      }}
+    >
       {/* Prev */}
       <button
         aria-label="Previous"

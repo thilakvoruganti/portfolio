@@ -10,75 +10,17 @@ body {
   margin: 0;
   overflow-x: hidden;   /* <-- stop the rightward scroll */
 }
-/* Cards wrapper margins after the navbar */
-.cards-wrap {
-  margin: 0;
-}
-@media (min-width: 960px) {
-  .cards-wrap {
-    margin: 2.5rem 0 5rem; /* top 2.5rem, bottom 5rem */
-  }
-}
 
 /* Cards wrapper margins after the navbar */
-.cards-wrap { margin: 0; }
-@media (min-width: 960px) {
-  .cards-wrap { margin: 2.5rem 0 5rem; } /* top 2.5rem, bottom 5rem */
-}
-/* Typing box wrapper — matches your css-76q2it */
-.type-wrap {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 3rem;          /* base */
-  z-index: 60;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;  /* clicks pass through unless re-enabled inside */
-}
-
-@media (min-width: 960px) {
-  .type-wrap { bottom: 6.6875rem; }
-}
-@media (min-width: 1280px) {
-  .type-wrap { bottom: 6.6875rem; }
-}
-@media (min-width: 1440px) {
-  .type-wrap { bottom: 8.9375rem; }
-}
-/* place in src/index.css (already discussed) */
-.type-wrap {
-  position: absolute;
-  left: 0; right: 0;
-  bottom: 3rem;
-  z-index: 60;              /* above cards (they use up to 40) */
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-}
-@media (min-width: 960px)  { .type-wrap { bottom: 6.6875rem; } }
-@media (min-width: 1280px) { .type-wrap { bottom: 6.6875rem; } }
-@media (min-width: 1440px) { .type-wrap { bottom: 8.9375rem; } }
-
-/* cards section margins ≥960px */
-.cards-wrap { margin: 0; }
-@media (min-width: 960px) { .cards-wrap { margin: 2.5rem 0 5rem; } }
-/* Cards wrapper margins after the 64px navbar */
-.cards-wrap { margin: 0; }
-@media (min-width: 960px) {
-  .cards-wrap { margin: 2.5rem 0 5rem; } /* top 2.5rem, bottom 5rem */
-}
+.cards-wrap { margin: 2.5rem 0 5rem; }
 
 /* Typing box wrapper — centered, absolute inside the section */
 .type-wrap {
   position: absolute;
-  left: 0; right: 0;
-  bottom: 3rem;             /* base */
+  left: 0;
+  right: 0;
   z-index: 60;              /* above cards (cards z-index up to 40) */
   display: flex;
   justify-content: center;
   pointer-events: none;     /* CTA/controls re-enable with pointer-events:auto */
 }
-@media (min-width: 960px)  { .type-wrap { bottom: 6.6875rem; } }
-@media (min-width: 1280px) { .type-wrap { bottom: 6.6875rem; } }
-@media (min-width: 1440px) { .type-wrap { bottom: 8.9375rem; } }

@@ -17,15 +17,46 @@ export default function Navbar() {
 
   const items = useMemo(
     () => [
-      { label: "Resume", onClick: () => { navigate("/Resume"); close(); } },
-      { label: "LN", onClick: () => window.open("https://www.linkedin.com/in/thilak-voruganti/", "_blank", "noreferrer") },
-      { label: "GM", onClick: () => (window.location.href = "mailto:thilakvoruganti@gmail.com") },
+      {
+        label: "Resume",
+        minWidth: 96,
+        onClick: () => {
+          close();
+          window.open(
+            "https://drive.google.com/file/d/1M7lYBms39dDydHhTzECN2D3DpF_KDoa3/view",
+            "_blank",
+            "noreferrer"
+          );
+        },
+      },
+      {
+        label: "LN",
+        minWidth: 70,
+        onClick: () => {
+          close();
+          window.open("https://www.linkedin.com/in/thilakvoruganti/", "_blank", "noreferrer");
+        },
+      },
+      {
+        label: "GM",
+        minWidth: 70,
+        onClick: () => {
+          close();
+          window.location.href = "mailto:thilak.voruganti@gmail.com";
+        },
+      },
     ],
-    [navigate]
+    [close]
   );
 
+  const panelWidth = useMemo(() => {
+    const buttonWidth = items.reduce((acc, item) => acc + item.minWidth, 0);
+    const gutterWidth = (items.length - 1) * 16; // 16px gap between buttons
+    return buttonWidth + gutterWidth;
+  }, [items]);
+
   return (
-    <header className="fixed top-0 inset-x-0 z-40 bg-white/80 backdrop-blur-sm">
+    <header className="fixed top-0 inset-x-0 z-40">
       <div className="mx-auto flex w-full max-w-[120rem] items-center justify-between px-6 py-4">
         <button
           className="shrink-0"
@@ -46,16 +77,23 @@ export default function Navbar() {
 
         <div className="relative flex items-center">
           <div
-            className={`flex items-center overflow-hidden transition-[width] duration-300 ease-out ${open ? "w-[140px] sm:w-[180px]" : "w-0"}`}
+            className="flex items-center overflow-hidden transition-[width] duration-300 ease-out"
+            style={{ width: open ? panelWidth + 16 : 0 }}
           >
             {items.map((item, idx) => (
               <button
                 key={item.label}
                 onClick={item.onClick}
-                className={`ml-4 text-sm font-medium tracking-tight text-neutral-900 transition-all duration-200 ${
-                  open ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0 pointer-events-none"
+                className={`fig-nav-item transition-all duration-200 rounded-xl px-4 py-2 ${
+                  open
+                    ? "translate-x-0 opacity-100 bg-neutral-900 text-white hover:bg-neutral-800"
+                    : "translate-x-6 opacity-0 pointer-events-none"
                 }`}
-                style={{ transitionDelay: `${open ? idx * 70 : 0}ms` }}
+                style={{
+                  minWidth: item.minWidth,
+                  marginRight: idx < items.length - 1 ? 16 : 0,
+                  transitionDelay: `${open ? idx * 70 : 0}ms`,
+                }}
               >
                 {item.label}
               </button>

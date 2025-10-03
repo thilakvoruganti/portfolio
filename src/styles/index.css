@@ -20,3 +20,31 @@
   width: 490px;
   height: 653px;
 }/*# sourceMappingURL=index.css.map */
+.fig-cx0h0r {
+  font-family: var(--f-font-sans, 'figmaSans', 'figmaSans Fallback', SF Pro Display, system-ui, helvetica, sans-serif);
+  font-optical-sizing: auto;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  letter-spacing: -0.005625rem;
+  font-weight: 480;
+  font-variation-settings: "wdth" 98, "wght" 480;
+  margin: 0;
+  color: var(--f-text-color, #000000);
+  color: inherit;
+}
+
+.fig-nav-item {
+  font-family: var(--f-font-sans, 'figmaSans', 'figmaSans Fallback', SF Pro Display, system-ui, helvetica, sans-serif);
+  font-optical-sizing: auto;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  letter-spacing: -0.01rem;
+  font-weight: 480;
+  font-variation-settings: "wdth" 98, "wght" 480;
+  text-transform: uppercase;
+  transition: color 200ms ease;
+}
+
+.fig-nav-item:hover {
+  color: #000;
+}
