@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.cfb7d6eb.css",
-    "main.js": "/portfolio/static/js/main.0d63719e.js",
+    "main.css": "/portfolio/static/css/main.86c61dff.css",
+    "main.js": "/portfolio/static/js/main.f9061928.js",
     "static/media/frontend.svg": "/portfolio/static/media/frontend.6f300b8b2901020899d1df147214f1e9.svg",
     "static/media/figma.svg": "/portfolio/static/media/figma.4ecd9ac05a0654fefe88040b1d2568c6.svg",
     "static/media/profile.png": "/portfolio/static/media/profile.3278c2ec0e3ea23d578e.png",
@@ -9,13 +9,15 @@
     "static/media/skills-bubble.png": "/portfolio/static/media/skills-bubble.abae4dbad2548ab6da6d.png",
     "static/media/AI.svg": "/portfolio/static/media/AI.94790bd86bf98f2fb7cd69ea9c2b09ed.svg",
     "static/media/world.png": "/portfolio/static/media/world.e09d7561c269d63c0935.png",
+    "static/media/icube.png": "/portfolio/static/media/icube.c423474a72c4cef5b025.png",
     "static/media/tcs.png": "/portfolio/static/media/tcs.7e2649aa80915dfd8cc9.png",
+    "static/media/gsu.png": "/portfolio/static/media/gsu.32434fcaeac22f682e91.png",
     "index.html": "/portfolio/index.html",
-    "main.cfb7d6eb.css.map": "/portfolio/static/css/main.cfb7d6eb.css.map",
-    "main.0d63719e.js.map": "/portfolio/static/js/main.0d63719e.js.map"
+    "main.86c61dff.css.map": "/portfolio/static/css/main.86c61dff.css.map",
+    "main.f9061928.js.map": "/portfolio/static/js/main.f9061928.js.map"
   },
   "entrypoints": [
-    "static/css/main.cfb7d6eb.css",
-    "static/js/main.0d63719e.js"
+    "static/css/main.86c61dff.css",
+    "static/js/main.f9061928.js"
   ]
 }
